@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="gatein-sample-portal-redirect">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
+        <dependent-module archiveName="gatein-sample-portal-config-1.0.jar" deploy-path="/lib" handle="module:/resource/gatein-sample-portal-config/gatein-sample-portal-config">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="sample-portal.war" deploy-path="/" handle="module:/resource/gatein-sample-portal-war/gatein-sample-portal-war">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="rest-sample-portal.war" deploy-path="/" handle="module:/resource/gatein-sample-portal-rest-war/gatein-sample-portal-rest-war">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
