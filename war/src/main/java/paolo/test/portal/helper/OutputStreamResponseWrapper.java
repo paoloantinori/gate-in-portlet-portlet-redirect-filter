@@ -1,10 +1,10 @@
 package paolo.test.portal.helper;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.lang.reflect.Constructor;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -24,20 +24,16 @@ public class OutputStreamResponseWrapper extends HttpServletResponseWrapper {
 	protected ServletOutputStream stream = null;
 	protected PrintWriter writer = null;
 
-	Class<? extends OutputStream> outputStreamClass;
 
-	public OutputStreamResponseWrapper(HttpServletResponse response,
-			Class<? extends OutputStream> outputStreamClass) {
+	public OutputStreamResponseWrapper(HttpServletResponse response) {
 		super(response);
-		origResponse = response;
-		this.outputStreamClass = outputStreamClass;
+		origResponse = response;;
 	}
 
 	protected ServletOutputStream createOutputStream() throws IOException {
 		try {
 
-			Constructor<?> c = outputStreamClass.getConstructor();
-			realOutputStream = (OutputStream) c.newInstance();
+			realOutputStream = new ByteArrayOutputStream();
 
 			return new ServletOutputStreamWrapper(realOutputStream);
 		} catch (Exception ex) {
@@ -80,8 +76,5 @@ public class OutputStreamResponseWrapper extends HttpServletResponseWrapper {
 		return writer;
 	}
 
-	@Override
-	public void setContentLength(int length) {
-	}
 
 }

@@ -13,7 +13,12 @@ import javax.portlet.PortletSecurityException;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.UnavailableException;
+
+import org.apache.log4j.Logger;
+
 public class Getter extends GenericPortlet {
+
+	private static final Logger LOGGER = Logger.getLogger(Getter.class);
 
 	/*
 	 * (non-Javadoc)
@@ -24,12 +29,13 @@ public class Getter extends GenericPortlet {
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
 			throws PortletException, IOException, UnavailableException {
+
+		LOGGER.info("Invoked Display Phase");
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-		
-		
+
 		writer.write("######### getter ###########");
-		
+
 		writer.write("<br/>");
 		writer.write("<div style='text-align:center;'>Parameters found</div>");
 		writer.write("<br/><br/>");
@@ -65,7 +71,7 @@ public class Getter extends GenericPortlet {
 	@Override
 	public void processAction(ActionRequest request, ActionResponse response)
 			throws PortletException, PortletSecurityException, IOException {
-		
+		LOGGER.info("Invoked Action Phase");
 		super.processAction(request, response);
 	}
 

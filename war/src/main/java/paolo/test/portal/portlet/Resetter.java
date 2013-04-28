@@ -15,7 +15,10 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.UnavailableException;
 
+import org.apache.log4j.Logger;
+
 public class Resetter extends GenericPortlet {
+	private static final Logger LOGGER = Logger.getLogger(Resetter.class);
 
 	/*
 	 * (non-Javadoc)
@@ -26,6 +29,7 @@ public class Resetter extends GenericPortlet {
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
 			throws PortletException, IOException, UnavailableException {
+		LOGGER.info("Invoked Display Phase");
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
 
@@ -33,7 +37,6 @@ public class Resetter extends GenericPortlet {
 		writer.write(String
 				.format("<br/><A href='%s' style='text-decoration:underline;'>RESET All Public Render Parameters</A><br/><br/>",
 						u));
-
 		writer.close();
 	}
 
@@ -46,7 +49,7 @@ public class Resetter extends GenericPortlet {
 	@Override
 	public void processAction(ActionRequest request, ActionResponse response)
 			throws PortletException, PortletSecurityException, IOException {
-
+		LOGGER.info("Invoked Action Phase");
 		List<String> list = Collections.list(request.getParameterNames());
 		for (String key : list) {
 			response.setRenderParameter(key, "");

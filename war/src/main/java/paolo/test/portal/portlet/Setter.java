@@ -13,9 +13,12 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import javax.portlet.UnavailableException;
 
+import org.apache.log4j.Logger;
+
 import paolo.test.portal.helper.Constants;
 
 public class Setter extends GenericPortlet {
+	private static final Logger LOGGER = Logger.getLogger(Setter.class);
 
 	/*
 	 * (non-Javadoc)
@@ -26,6 +29,7 @@ public class Setter extends GenericPortlet {
 	@Override
 	protected void doView(RenderRequest request, RenderResponse response)
 			throws PortletException, IOException, UnavailableException {
+		LOGGER.info("Invoked Display Phase");
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
 
@@ -42,6 +46,7 @@ public class Setter extends GenericPortlet {
 		writer.write(String
 				.format("<br/><A href='%s' style='text-decoration:underline;'>REDIRECT to %s and set PublicRenderParameters</A><br/><br/>",
 						url, requiredDestination));
+		LOGGER.info("Generated url with redirect parameters");
 
 		writer.close();
 
@@ -67,7 +72,8 @@ public class Setter extends GenericPortlet {
 	@Override
 	public void processAction(ActionRequest request, ActionResponse response)
 			throws PortletException, PortletSecurityException, IOException {
-		System.out.println("process action invoked");
+		LOGGER.info("Invoked Action Phase");
+
 		response.setRenderParameter("prp", "#######################");
 	}
 

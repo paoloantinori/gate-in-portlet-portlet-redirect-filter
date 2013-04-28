@@ -1,6 +1,5 @@
 package paolo.test.portal.servletfilter;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -13,9 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import paolo.test.portal.helper.OutputStreamResponseWrapper;
-
 import paolo.test.portal.helper.Constants;
+import paolo.test.portal.helper.OutputStreamResponseWrapper;
 
 /**
  * Servlet Filter that intercepts HttpRequests and pass along a specialized
@@ -36,10 +34,7 @@ public class PortletRedirectFilter implements javax.servlet.Filter {
 
 	FilterChain chain) throws IOException, ServletException {
 
-		System.out.println("filter triggered");
-
-		if (LOGGER.isDebugEnabled())
-			LOGGER.debug("started filtering all urls defined in the filter url mapping ");
+		LOGGER.info("started filtering all urls defined in the filter url mapping ");
 
 		if (request instanceof HttpServletRequest) {
 			HttpServletRequest hsreq = (HttpServletRequest) request;
@@ -53,8 +48,7 @@ public class PortletRedirectFilter implements javax.servlet.Filter {
 				// creates the HttpResponseWrapper that will buffer the answer
 				// inside memory
 				OutputStreamResponseWrapper wrappedResponse = new OutputStreamResponseWrapper(
-						(HttpServletResponse) response,
-						ByteArrayOutputStream.class);
+						(HttpServletResponse) response);
 				// forward the call to the subsequent actions that could modify
 				// externals or global scope variables
 				chain.doFilter(request, wrappedResponse);
@@ -65,13 +59,11 @@ public class PortletRedirectFilter implements javax.servlet.Filter {
 				hsres.sendRedirect(destinationUrl);
 
 			} else {
-				if (LOGGER.isDebugEnabled())
-					LOGGER.debug("no redirection defined");
+				LOGGER.info("no redirection defined");
 				chain.doFilter(request, response);
 			}
 		} else {
-			if (LOGGER.isDebugEnabled())
-				LOGGER.debug("filter invoked outside the portal scope");
+			LOGGER.info("filter invoked outside the portal scope");
 			chain.doFilter(request, response);
 		}
 
