@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
  */
 public class OutputStreamResponseWrapper extends HttpServletResponseWrapper {
 	protected HttpServletResponse origResponse = null;
-	protected OutputStream realOutputStream = null;
+	protected OutputStream bufferedOutputStream = null;
 	protected ServletOutputStream stream = null;
 	protected PrintWriter writer = null;
 
@@ -33,26 +33,18 @@ public class OutputStreamResponseWrapper extends HttpServletResponseWrapper {
 	protected ServletOutputStream createOutputStream() throws IOException {
 		try {
 
-			realOutputStream = new ByteArrayOutputStream();
+			bufferedOutputStream = new ByteArrayOutputStream();
 
-			return new ServletOutputStreamWrapper(realOutputStream);
+			return new ServletOutputStreamWrapper(bufferedOutputStream);
 		} catch (Exception ex) {
 			throw new IOException("Unable to construct servlet output stream: "
 					+ ex.getMessage(), ex);
 		}
 	}
 
-	@Override
-	public void flushBuffer() throws IOException {
-		stream.flush();
-	}
 
 	@Override
 	public ServletOutputStream getOutputStream() throws IOException {
-		if (writer != null) {
-			throw new IllegalStateException(
-					"getOutputStream() has already been called!");
-		}
 
 		if (stream == null) {
 			stream = createOutputStream();
@@ -66,9 +58,8 @@ public class OutputStreamResponseWrapper extends HttpServletResponseWrapper {
 			return (writer);
 		}
 
-		if (stream != null) {
-			throw new IllegalStateException(
-					"getOutputStream() has already been called!");
+		if (stream == null) {
+			stream = createOutputStream();
 		}
 
 		stream = createOutputStream();
