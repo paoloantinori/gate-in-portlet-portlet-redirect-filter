@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import paolo.test.portal.helper.Constants;
-import paolo.test.portal.helper.OutputStreamResponseWrapper;
+import paolo.test.portal.helper.DelayedHttpServletResponse;
 
 /**
  * Servlet Filter that intercepts HttpRequests and pass along a specialized
@@ -46,16 +46,15 @@ public class PortletRedirectFilter implements javax.servlet.Filter {
 			if (destinationUrl != null) {
 				LOGGER.info("found a redirect request " + destinationUrl);
 				// creates the HttpResponseWrapper that will buffer the answer
-				// inside memory
-				OutputStreamResponseWrapper wrappedResponse = new OutputStreamResponseWrapper(
+				// in memory
+				DelayedHttpServletResponse delayedResponse = new DelayedHttpServletResponse(
 						(HttpServletResponse) response);
 				// forward the call to the subsequent actions that could modify
 				// externals or global scope variables
-				chain.doFilter(request, wrappedResponse);
+				chain.doFilter(request, delayedResponse);
 
 				// fire the redirection on the original response object
-				HttpServletResponse hsres = (HttpServletResponse) wrappedResponse
-						.getResponse();
+				HttpServletResponse hsres = (HttpServletResponse) response;
 				hsres.sendRedirect(destinationUrl);
 
 			} else {
@@ -73,8 +72,11 @@ public class PortletRedirectFilter implements javax.servlet.Filter {
 		this.filterConfig = filterConfig;
 	}
 
+	@Override
 	public void destroy() {
-
+		// TODO Auto-generated method stub
+		
 	}
+
 
 }

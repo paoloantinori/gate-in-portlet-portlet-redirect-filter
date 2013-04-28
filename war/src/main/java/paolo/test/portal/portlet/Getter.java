@@ -34,8 +34,6 @@ public class Getter extends GenericPortlet {
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
 
-		writer.write("######### getter ###########");
-
 		writer.write("<br/>");
 		writer.write("<div style='text-align:center;'>Parameters found</div>");
 		writer.write("<br/><br/>");

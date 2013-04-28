@@ -35,6 +35,17 @@
             <show-application-state>false</show-application-state>
             <show-application-mode>false</show-application-mode>
         </portlet-application>
+       <portlet-application>
+            <portlet>
+                <application-ref>sample-portal</application-ref>
+                <portlet-ref>ResetterPortlet</portlet-ref>
+            </portlet>
+            <title>Resetter Portlet</title>
+            <access-permissions>Everyone</access-permissions>
+            <show-info-bar>false</show-info-bar>
+            <show-application-state>false</show-application-state>
+            <show-application-mode>false</show-application-mode>
+        </portlet-application>
     </page>
 
     <page>

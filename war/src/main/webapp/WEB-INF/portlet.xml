@@ -53,6 +53,23 @@
 		<supported-public-render-parameter>prp</supported-public-render-parameter>
 	</portlet>
 
+
+	<portlet>
+		<description>Resetter</description>
+		<portlet-name>ResetterPortlet</portlet-name>
+		<display-name>ResetterPortlet</display-name>
+		<portlet-class>paolo.test.portal.portlet.Resetter</portlet-class>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>ResetterPortlet</title>
+		</portlet-info>
+
+		<supported-public-render-parameter>prp</supported-public-render-parameter>
+	</portlet>
+
 	<public-render-parameter>
 		<identifier>prp</identifier>
 		<qname xmlns:x="http://jboss.com">x:prp</qname>
