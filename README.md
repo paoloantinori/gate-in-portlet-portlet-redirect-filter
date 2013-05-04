@@ -1,7 +1,5 @@
 <!--~ Do not edit this derived file! See gatein-portal-quickstarts-parent/src/main/freemarker/gatein-sample-portal/README.md.ftl ~-->
 
-gatein-sample-portal: GateIn Sample Portal
-============================
 Author: Thomas Heute, Peter Palaga  
 Level: Beginner  
 Technologies: GateIn, Portal Container  
@@ -136,3 +134,4 @@ Feedback
 --------
 
 Please post feedback on this quickstart or GateIn on [User Forum](https://community.jboss.org/en/gatein?view=discussions).
+
