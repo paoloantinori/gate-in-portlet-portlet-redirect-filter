@@ -9,10 +9,9 @@ http://giallone.blogspot.co.uk/2013/05/gatein-interportlet-interpage.html
 
 paolo
 
-paolo.antinori@gmail.com
-http://giallone.blogspot.co.uk
+paolo.antinori@gmail.com  
 
-
+-------------------
 
 
 <!--~ Do not edit this derived file! See gatein-portal-quickstarts-parent/src/main/freemarker/gatein-sample-portal/README.md.ftl ~-->
