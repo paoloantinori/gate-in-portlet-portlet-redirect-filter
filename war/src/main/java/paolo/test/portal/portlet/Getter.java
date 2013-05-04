@@ -33,7 +33,7 @@ public class Getter extends GenericPortlet {
 		LOGGER.info("Invoked Display Phase");
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
-
+		
 		writer.write("<br/>");
 		writer.write("<div style='text-align:center;'>Parameters found</div>");
 		writer.write("<br/><br/>");

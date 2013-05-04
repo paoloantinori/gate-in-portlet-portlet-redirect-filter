@@ -42,7 +42,7 @@ public class PortletRedirectFilter implements javax.servlet.Filter {
 			// search for a GET parameter called as defined in REDIRECT_TO
 			// variable
 			String destinationUrl = hsreq.getParameter(Constants.REDIRECT_TO);
-
+			
 			if (destinationUrl != null) {
 				LOGGER.info("found a redirect request " + destinationUrl);
 				// creates the HttpResponseWrapper that will buffer the answer

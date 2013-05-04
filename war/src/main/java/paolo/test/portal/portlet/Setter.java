@@ -42,6 +42,7 @@ public class Setter extends GenericPortlet {
 
 		String requiredDestination = "/sample-portal/classic/getterPage";
 		String url = addRedirectInfo(portalURL, requiredDestination);
+		
 
 		writer.write(String
 				.format("<br/><A href='%s' style='text-decoration:underline;'>REDIRECT to %s and set PublicRenderParameters</A><br/><br/>",
