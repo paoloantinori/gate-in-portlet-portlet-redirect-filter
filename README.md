@@ -1,3 +1,20 @@
+This is the original GateIn Readme file. It will guid you to the configuration of the GateIn JBoss 7 distribution that requires you to uncomment fromt he default configuration files a couple of component used by the Sample Portal.
+
+My work related to the Redirect filter is deployed automatically in a modified version of the Sample Portal and no particular action specific to my project need to be performed to build and deploy.
+
+Just follow Gate In instruction and drop a comment on my Blog if you need help.
+
+http://giallone.blogspot.co.uk/2013/05/gatein-interportlet-interpage.html
+
+
+paolo
+
+paolo.antinori@gmail.com
+http://giallone.blogspot.co.uk
+
+
+
+
 <!--~ Do not edit this derived file! See gatein-portal-quickstarts-parent/src/main/freemarker/gatein-sample-portal/README.md.ftl ~-->
 
 Author: Thomas Heute, Peter Palaga  
